@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
-    <div>
+    <div id='games' className='container'>
       <h1>GAMES:</h1>
       <Link to='/memory'>Memory Game</Link>
     </div>

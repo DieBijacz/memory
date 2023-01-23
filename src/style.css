@@ -11,13 +11,35 @@ body {
   color: #363636;
 }
 
+a {
+  text-decoration: none;
+  color: #363636;
+  padding: .65rem 2rem;
+}
+
+a:hover {
+  background-color: #f0f0f0;
+}
+
+.container {
+  width: calc(min(900px, 98%));
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .navbar {
   display: -ms-grid;
   display: grid;
+  height: 3rem;
   place-items: center;
-  height: 50px;
   font-size: 1.2rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .navbar ul {
@@ -32,5 +54,81 @@ body {
           align-items: center;
   gap: 3rem;
   list-style: none;
+}
+
+#memory-game {
+  background-color: #2B87D1;
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#memory-game .stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #f0f0f0;
+  font-size: 2rem;
+  margin: 2rem;
+}
+
+#memory-game .board {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+#memory-game .board .cell {
+  width: 7rem;
+  height: 7rem;
+  background-color: #2573C1;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#statistics {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+#statistics .card {
+  border-radius: 10px;
+  padding: 2rem;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#statistics .card p {
+  margin: 1rem 0;
+}
+
+#footer {
+  background-color: #f0f0f0;
+  height: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=style.css.map */

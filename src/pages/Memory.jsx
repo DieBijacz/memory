@@ -1,4 +1,4 @@
-import Game from "../components/Game";
+import Game from "../components/Memory-Game/Game";
 import Statistics from "../components/Statistics";
 
 function Memory() {
