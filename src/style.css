@@ -52,8 +52,11 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 3rem;
   list-style: none;
+}
+
+#home {
+  min-height: calc(100vh);
 }
 
 #memory-game {
@@ -82,6 +85,7 @@ a:hover {
   color: #f0f0f0;
   font-size: 2rem;
   margin: 2rem;
+  gap: 2rem;
 }
 
 #memory-game .board {
@@ -96,9 +100,18 @@ a:hover {
 #memory-game .board .cell {
   width: 7rem;
   height: 7rem;
-  background-color: #2573C1;
   border-radius: 5px;
   cursor: pointer;
+}
+
+#memory-game .board .hide {
+  background-color: #2573C1;
+}
+
+#memory-game .board .show {
+  background-color: white;
+  -webkit-animation: .2s flip ease-in-out;
+          animation: .2s flip ease-in-out;
 }
 
 #statistics {
@@ -130,5 +143,39 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@-webkit-keyframes flip {
+  0% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+    background-color: #2573C1;
+  }
+  50% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  100% {
+    background-color: white;
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+
+@keyframes flip {
+  0% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+    background-color: #2573C1;
+  }
+  50% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  100% {
+    background-color: white;
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
 }
 /*# sourceMappingURL=style.css.map */

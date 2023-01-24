@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Cell = ({ cell }) => {
-  const { value } = cell
+  const [flipped, setFlipped] = useState(false)
 
   function handleCellClick() {
-    console.log(value)
+    console.log(flipped)
+    setFlipped(true)
   }
   return (
-    <div className='cell' onClick={handleCellClick}></div>
+    <div className={`cell ${flipped ? 'show' : 'hide'}`} onClick={handleCellClick}></div>
   )
 }
 

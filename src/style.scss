@@ -45,9 +45,12 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
     list-style: none;
   }
+}
+
+#home {
+  min-height: calc(100vh);
 }
 
 #memory-game {
@@ -64,6 +67,7 @@ a {
     color: $light-grey;
     font-size: 2rem;
     margin: 2rem;
+    gap: 2rem;
   }
 
   .board {
@@ -75,9 +79,18 @@ a {
     .cell {
       width: 7rem;
       height: 7rem;
-      background-color: $dark-blue;
       border-radius: 5px;
       cursor: pointer;
+      // box-shadow: inset -1px -1px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .hide {
+      background-color: $dark-blue;
+    }
+
+    .show {
+      background-color: white;
+      animation: .2s flip ease-in-out;
     }
   }
 }
@@ -104,4 +117,20 @@ a {
   height: 3rem;
   display: flex;
   align-items: center;
+}
+
+@keyframes flip {
+  0% {
+    transform: scaleY(1);
+    background-color: #2573C1;
+  }
+
+  50% {
+    transform: scaleY(0);
+  }
+
+  100% {
+    background-color: white;
+    transform: scaleY(1);
+  }
 }
