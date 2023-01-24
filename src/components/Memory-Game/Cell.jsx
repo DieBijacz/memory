@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 const Cell = ({ cell }) => {
+  console.log(cell)
   const [flipped, setFlipped] = useState(false)
 
   function handleCellClick() {

@@ -3,25 +3,30 @@ import Cell from './Cell'
 
 const Game = () => {
   const [level, setLevel] = useState(1)
+  const [boardSize, setBoardSize] = useState(3)
   const [lives, setLives] = useState(3)
-  const [cells, setCells] = useState([
-    { value: 0 },
-    { value: 1 },
-    { value: 1 },
-    { value: 1 },
-    { value: 1 },
-    { value: 1 },
-    { value: 1 },
-    { value: 1 },
-    { value: 1 },
-  ])
+  const [cells, setCells] = useState([])
 
   useEffect(() => {
-    generateCells(level * 3)
+    generateCells()
   }, [level])
 
-  function generateCells(numOfCells) {
-    console.log(numOfCells)
+  function generateCells() {
+    const cells = []
+
+    // generate value 1 cells 
+    for (let i = 0; i < (level + 2); i++) {
+      const cell = { value: 1 }
+      cells.push(cell)
+    }
+
+    // generate value 0 cells
+    for (let i = 0; i < (boardSize * boardSize) - (level + 2); i++) {
+      const cell = { value: 0 }
+      cells.push(cell)
+    }
+
+    setCells(cells.sort(() => (Math.random() > .5) ? 1 : -1))
   }
 
   return (
