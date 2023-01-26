@@ -1,20 +1,24 @@
 import React, { useState } from 'react'
 
-const Cell = ({ cell }) => {
+const Cell = ({ cell, setWrongClick }) => {
   const { value } = cell
-  const [flipped, setFlipped] = useState(false)
+  const [cellState, setCellState] = useState('hidden')
+  const [alreadyClicked, setAlreadyClicked] = useState(false)
   const [wrong, setWrong] = useState(false)
 
   function handleCellClick() {
+    if (alreadyClicked) return
     if (value === 1) {
-      setFlipped(true)
+      setCellState('show')
     } else {
-      setWrong(true)
+      setCellState('wrong')
+      setWrongClick(prev => prev += 1)
     }
+    setAlreadyClicked(true)
   }
 
   return (
-    <div className={`cell ${flipped ? 'show' : 'hide'} ${wrong && 'wrong'}`} onClick={handleCellClick}></div>
+    <div className={`cell ${cellState}`} onClick={handleCellClick}>{cellState}</div>
   )
 }
 

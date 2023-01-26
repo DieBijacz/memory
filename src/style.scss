@@ -11,6 +11,7 @@ $light-grey: rgb(240, 240, 240);
 $dark-grey: rgb(54, 54, 54);
 $blue: #2B87D1;
 $dark-blue: #2573C1;
+$very-dark-blue: #103a64;
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -68,6 +69,11 @@ a {
     font-size: 2rem;
     margin: 2rem;
     gap: 2rem;
+
+    .lives {
+      display: flex;
+      gap: 1rem;
+    }
   }
 
   .board {
@@ -84,7 +90,7 @@ a {
       // box-shadow: inset -1px -1px 5px rgba(0, 0, 0, 0.1);
     }
 
-    .hide {
+    .hidden {
       background-color: $dark-blue;
     }
 
@@ -94,7 +100,7 @@ a {
     }
 
     .wrong {
-      background-color: red;
+      background-color: $very-dark-blue;
       animation: .5s wrong linear;
     }
   }

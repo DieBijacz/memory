@@ -88,6 +88,13 @@ a:hover {
   gap: 2rem;
 }
 
+#memory-game .stats .lives {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
 #memory-game .board {
   display: -ms-grid;
   display: grid;
@@ -104,7 +111,7 @@ a:hover {
   cursor: pointer;
 }
 
-#memory-game .board .hide {
+#memory-game .board .hidden {
   background-color: #2573C1;
 }
 
@@ -115,7 +122,7 @@ a:hover {
 }
 
 #memory-game .board .wrong {
-  background-color: red;
+  background-color: #103a64;
   -webkit-animation: .5s wrong linear;
           animation: .5s wrong linear;
 }
