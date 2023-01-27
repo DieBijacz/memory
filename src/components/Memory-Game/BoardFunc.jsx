@@ -16,9 +16,6 @@ export function generateCells(level, boardSize, setCells) {
   setCells(cells.sort(() => (Math.random() > .5) ? 1 : -1))
 }
 
-export function showGoodCells({ cells }) {
-}
-
 export function gameOver() {
   console.log('game over')
 

@@ -109,10 +109,15 @@ a:hover {
   height: 7rem;
   border-radius: 5px;
   cursor: pointer;
+  -webkit-box-shadow: inset -1px -1px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: inset -1px -1px 5px rgba(0, 0, 0, 0.1);
+  background-color: #2573C1;
 }
 
 #memory-game .board .hidden {
   background-color: #2573C1;
+  -webkit-animation: .2s flip-back ease-in-out;
+          animation: .2s flip-back ease-in-out;
 }
 
 #memory-game .board .show {
@@ -187,6 +192,38 @@ a:hover {
   }
   100% {
     background-color: white;
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+
+@-webkit-keyframes flip-back {
+  0% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+  50% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  100% {
+    background-color: #2573C1;
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+
+@keyframes flip-back {
+  0% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+  50% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  100% {
+    background-color: #2573C1;
     -webkit-transform: scaleY(1);
             transform: scaleY(1);
   }

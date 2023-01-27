@@ -87,11 +87,13 @@ a {
       height: 7rem;
       border-radius: 5px;
       cursor: pointer;
-      // box-shadow: inset -1px -1px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: inset -1px -1px 5px rgba(0, 0, 0, 0.1);
+      background-color: $dark-blue;
     }
 
     .hidden {
       background-color: $dark-blue;
+      animation: .2s flip-back ease-in-out;
     }
 
     .show {
@@ -142,6 +144,21 @@ a {
 
   100% {
     background-color: white;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes flip-back {
+  0% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0);
+  }
+
+  100% {
+    background-color: #2573C1;
     transform: scaleY(1);
   }
 }

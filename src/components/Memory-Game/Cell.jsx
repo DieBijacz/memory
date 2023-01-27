@@ -1,13 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Cell = ({ cell, setWrongClick }) => {
   const { value } = cell
   const [cellState, setCellState] = useState('hidden')
   const [alreadyClicked, setAlreadyClicked] = useState(false)
-  const [wrong, setWrong] = useState(false)
+
+  const TIME_SHOW_ON_START = 1500
+
+  // show cells on start
+  useEffect(() => {
+    if (value === 1)
+      setCellState('show')
+    setTimeout(() => {
+      setCellState('hidden')
+    }, TIME_SHOW_ON_START)
+  }, [value])
 
   function handleCellClick() {
+    // allow only one click on cell
     if (alreadyClicked) return
+
+    // update cell state
     if (value === 1) {
       setCellState('show')
     } else {
@@ -18,7 +31,7 @@ const Cell = ({ cell, setWrongClick }) => {
   }
 
   return (
-    <div className={`cell ${cellState}`} onClick={handleCellClick}>{cellState}</div>
+    <div className={`cell ${cellState}`} onClick={handleCellClick}></div>
   )
 }
 
