@@ -9,6 +9,10 @@ const Game = () => {
   const [boardSize, setBoardSize] = useState(3)
   const [cells, setCells] = useState([])
   const [wrongClick, setWrongClick] = useState(0)
+  const [rightClick, setRightCLick] = useState(0)
+  const [allowClicks, setAllowClicks] = useState(false)
+
+  const cellProps = { setWrongClick, rightClick, setRightCLick, wrongClick, allowClicks, setAllowClicks }
 
   // INITIAL GAME
   useEffect(() => {
@@ -19,18 +23,32 @@ const Game = () => {
   useEffect(() => {
     if (wrongClick === 3) {
       gameOver()
+      setAllowClicks(false)
       setLives(prev => prev -= 1)
     }
-  }, [wrongClick, setLives])
+  }, [wrongClick, setLives, setAllowClicks])
+
+  // RIGHT LICKS
+  useEffect(() => {
+    if (rightClick === 3) {
+      changeLevel()
+      setAllowClicks(false)
+    }
+  }, [rightClick, setAllowClicks])
+
+  function changeLevel() {
+    setCells([])
+    setLevel(prev => prev += 1)
+  }
 
   return (
     <div id='memory-game'>
       <div className="stats">
-        <div>Level: {level}</div>
+        <div>Level: {level}{`(${rightClick})`}</div>
         <Lives lives={lives} />
       </div>
       <div className="board">
-        {cells.map((cell, index) => <Cell setWrongClick={setWrongClick} key={index} cell={cell} />)}
+        {cells.map((cell, index) => <Cell cell={cell} cellProps={cellProps} key={index} />)}
       </div>
     </div >
   )
