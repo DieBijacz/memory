@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { TIME_SHOW_ON_START } from './settings'
 
 const Cell = ({ cell, cellProps }) => {
   const { setWrongClick, rightClick, setRightCLick, wrongClick, allowClicks, setAllowClicks } = cellProps
   const [cellState, setCellState] = useState('hidden')
   const [alreadyClicked, setAlreadyClicked] = useState(false)
-
-  const TIME_SHOW_ON_START = 2500
 
   // SHOW CELLS ON START
   useEffect(() => {
@@ -15,7 +14,7 @@ const Cell = ({ cell, cellProps }) => {
       setCellState('hidden')
       setAllowClicks(true)
     }, TIME_SHOW_ON_START)
-  }, [cell.value])
+  }, [cell.value, setAllowClicks])
 
   function handleCellClick() {
     // allow only one click on cell

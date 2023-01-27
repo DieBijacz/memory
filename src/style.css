@@ -98,15 +98,15 @@ a:hover {
 #memory-game .board {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-bottom: 3rem;
+  width: 500px;
+  height: 500px;
 }
 
 #memory-game .board .cell {
-  width: 7rem;
-  height: 7rem;
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
   cursor: pointer;
   -webkit-box-shadow: inset -1px -1px 5px rgba(0, 0, 0, 0.1);
