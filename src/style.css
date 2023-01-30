@@ -118,25 +118,25 @@ a {
           justify-content: center;
 }
 
-#memory-game .start-panel {
+#memory-game .panel {
   color: white;
 }
 
-#memory-game .start-panel .squares-icon {
-  font-size: 4.6rem;
-  color: white;
-  gap: 0px 10px;
-}
-
-#memory-game .start-panel span {
+#memory-game .panel span {
   font-size: 4rem;
 }
 
-#memory-game .start-panel p {
+#memory-game .panel p {
   font-size: 1.2rem;
 }
 
-#memory-game .start-panel button {
+#memory-game .panel .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#memory-game .panel button {
   border: none;
   padding: 1rem 2rem;
   background-color: #ecc61b;
@@ -145,6 +145,18 @@ a {
   border-radius: 5px;
   cursor: pointer;
   margin: 1.5rem;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+#memory-game .panel button:hover {
+  background-color: #ffefa7;
+}
+
+#memory-game .panel .squares-icon {
+  font-size: 4.6rem;
+  color: white;
+  gap: 0px 10px;
 }
 
 #memory-game .stats {
@@ -430,5 +442,25 @@ a {
     -webkit-transform: translate(1px, -2px) rotate(-1deg);
             transform: translate(1px, -2px) rotate(-1deg);
   }
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity 300ms ease-in;
+  transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  -webkit-transition: opacity 300ms ease-out;
+  transition: opacity 300ms ease-out;
 }
 /*# sourceMappingURL=style.css.map */

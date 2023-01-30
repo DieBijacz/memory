@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { TIME_SHOW_ON_START } from './settings'
+import { DELEY_BEFORE_SHOW_RIGHT_CELLS, TIME_SHOW_ON_START } from './settings'
 
 const Cell = ({ cell, cellProps }) => {
   const { setWrongClick, setRightCLick, allowClicks, setAllowClicks } = cellProps
@@ -8,12 +8,14 @@ const Cell = ({ cell, cellProps }) => {
 
   // SHOW CELLS ON START
   useEffect(() => {
-    if (cell.value === 1)
-      setCellState('show')
     setTimeout(() => {
-      setCellState('hidden')
-      setAllowClicks(true)
-    }, TIME_SHOW_ON_START)
+      if (cell.value === 1)
+        setCellState('show')
+      setTimeout(() => {
+        setCellState('hidden')
+        setAllowClicks(true)
+      }, TIME_SHOW_ON_START)
+    }, DELEY_BEFORE_SHOW_RIGHT_CELLS);
   }, [cell.value, setAllowClicks])
 
   function handleCellClick() {

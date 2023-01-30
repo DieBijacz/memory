@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Cell from './Cell'
-import { gameOver, generateCells } from './BoardFunc.jsx'
+import { generateCells, saveScore } from './BoardFunc.jsx'
 import Lives from './Lives'
 import { BOARD_SIZE_GRID, BORAD_SIZE_IN_PX } from './settings'
 import { faSquare as emptySquare } from '@fortawesome/free-regular-svg-icons'
@@ -8,7 +8,7 @@ import { faSquare as filledSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Game = () => {
-  const [startGame, setStartGame] = useState(false)
+  const [displayPanel, setDisplayPanel] = useState('game-over')
   const [level, setLevel] = useState(1)
   const [lives, setLives] = useState(3)
   const [boardSize, setBoardSize] = useState(3)
@@ -40,11 +40,13 @@ const Game = () => {
 
   // 3 WRONG CLICKS
   useEffect(() => {
+    if (lives === 0) setDisplayPanel('game-over')
     if (wrongClick === 3) {
-      gameOver()
       setAllowClicks(false)
-      setLives(prev => prev -= 1)
-      clearCells()
+      setTimeout(() => {
+        setLives(prev => prev -= 1)
+        clearCells()
+      }, 1000)
     }
   }, [wrongClick, setLives, setAllowClicks, clearCells])
 
@@ -58,8 +60,10 @@ const Game = () => {
 
   return (
     <div id='memory-game'>
-      {!startGame ?
-        <div className='background start-panel'>
+
+      {/* START GAME */}
+      {displayPanel === 'start-game' && <>
+        <div className='background panel'>
           <div className='squares-icon'>
             <FontAwesomeIcon icon={filledSquare} />
             <FontAwesomeIcon icon={emptySquare} />
@@ -68,9 +72,12 @@ const Game = () => {
           </div>
           <span>Visual Memory Test</span>
           <p>Memorize the squares.</p>
-          <button onClick={() => setStartGame(true)}>Start</button>
+          <button onClick={() => setDisplayPanel('game-panel')}>Start</button>
         </div>
-        :
+      </>}
+
+      {/* GAME */}
+      {displayPanel === 'game-panel' && <>
         <div className='background'>
           <div className="stats">
             <div>Level: {level}</div>
@@ -80,7 +87,26 @@ const Game = () => {
             {cells.map((cell, index) => <Cell cell={cell} cellProps={cellProps} key={index} />)}
           </div>
         </div>
-      }
+      </>}
+
+      {/* GAME OVER */}
+      {displayPanel === 'game-over' && <>
+        <div className='background panel'>
+          <div className='squares-icon'>
+            <FontAwesomeIcon icon={filledSquare} />
+            <FontAwesomeIcon icon={emptySquare} />
+            <FontAwesomeIcon icon={filledSquare} />
+            <FontAwesomeIcon icon={filledSquare} />
+          </div>
+          <p>Visual Memory Test</p>
+          <span>Level {level}</span>
+          <p>Save your score to see how you compare.</p>
+          <div className='buttons'>
+            <button onClick={saveScore}>Save score</button>
+            <button onClick={() => setDisplayPanel('game-panel')}>Try Again</button>
+          </div>
+        </div>
+      </>}
     </div >
   )
 }

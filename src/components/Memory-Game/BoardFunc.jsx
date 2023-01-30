@@ -16,7 +16,8 @@ export function generateCells(level, boardSize, setCells) {
   setCells(cells.sort(() => (Math.random() > .5) ? 1 : -1))
 }
 
-export function gameOver() {
-  console.log('game over')
-
+export function saveScore() {
+  //TODO save score on backend
+  //TODO when saved, show statistics 
+  console.log('save score')
 }
