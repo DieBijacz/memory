@@ -6,19 +6,38 @@
           box-sizing: border-box;
 }
 
+#App {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   color: #363636;
 }
 
+ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+}
+
 a {
   text-decoration: none;
   color: #363636;
-  padding: .65rem 2rem;
-}
-
-a:hover {
-  background-color: #f0f0f0;
 }
 
 .container {
@@ -33,7 +52,7 @@ a:hover {
           flex-direction: column;
 }
 
-.navbar {
+#navbar {
   display: -ms-grid;
   display: grid;
   height: 3rem;
@@ -42,21 +61,14 @@ a:hover {
   font-weight: 400;
 }
 
-.navbar ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  list-style: none;
+#navbar a:hover {
+  background-color: #f0f0f0;
 }
 
-#home {
-  min-height: calc(100vh);
+.flex-1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 #memory-game {
@@ -100,8 +112,6 @@ a:hover {
   display: grid;
   gap: 1rem;
   margin-bottom: 3rem;
-  width: 500px;
-  height: 500px;
 }
 
 #memory-game .board .cell {
@@ -134,7 +144,7 @@ a:hover {
           animation: .5s wrong linear;
 }
 
-#statistics {
+.card-container {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2];
@@ -143,15 +153,62 @@ a:hover {
   margin: 1rem 0;
 }
 
-#statistics .card {
+.card-container .card {
   border-radius: 10px;
   padding: 2rem;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  height: 100%;
 }
 
-#statistics .card p {
-  margin: 1rem 0;
+.card-container .card p {
+  margin-bottom: auto;
+  margin-top: .5rem;
+}
+
+.card-container .icon {
+  font-size: 3rem;
+  color: #6faee2;
+  margin: 1rem;
+}
+
+.card-container .squares-icon {
+  color: #6faee2;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  gap: 0px 3px;
+  font-size: 1.6rem;
+  margin: 1rem;
+}
+
+.card-container .title {
+  font-size: 1.5rem;
+}
+
+.card-container .center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.card-container .link:hover {
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
 }
 
 #footer {

@@ -1,5 +1,6 @@
 export const TIME_SHOW_ON_START = 1000
-export const boardSizeBasedOnLevel = {
+export const BORAD_SIZE_IN_PX = 450
+export const BOARD_SIZE_GRID = {
   1: 3,
   2: 4,
   3: 4,

@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Cell from './Cell'
-import { gameOver, generateCells } from './BoardFunc.jsx'
+import { blink, gameOver, generateCells } from './BoardFunc.jsx'
 import Lives from './Lives'
-import { boardSizeBasedOnLevel } from './settings'
+import { BOARD_SIZE_GRID, BORAD_SIZE_IN_PX } from './settings'
 
 const Game = () => {
   const [level, setLevel] = useState(1)
@@ -20,6 +20,15 @@ const Game = () => {
     generateCells(level, boardSize, setCells)
   }, [level, boardSize, setCells])
 
+  // LEVEL UP
+  const changeLevel = useCallback(() => {
+    setCells([])
+    setRightCLick(0)
+    setWrongClick(0)
+    setLevel(prev => prev += 1)
+    setBoardSize(BOARD_SIZE_GRID[level])
+  }, [level, setLevel])
+
   // WRONG CLICKS
   useEffect(() => {
     if (wrongClick === 3) {
@@ -28,14 +37,6 @@ const Game = () => {
       setLives(prev => prev -= 1)
     }
   }, [wrongClick, setLives, setAllowClicks])
-
-  const changeLevel = useCallback(() => {
-    setCells([])
-    setRightCLick(0)
-    setWrongClick(0)
-    setLevel(prev => prev += 1)
-    setBoardSize(boardSizeBasedOnLevel[level])
-  }, [level, setLevel])
 
   // RIGHT LICKS
   useEffect(() => {
@@ -48,10 +49,10 @@ const Game = () => {
   return (
     <div id='memory-game'>
       <div className="stats">
-        <div>Level: {level}{`(${rightClick})`}</div>
+        <div>Level: {level}</div>
         <Lives lives={lives} />
       </div>
-      <div className="board" style={{ gridTemplateColumns: `repeat(${boardSize}, 1fr)` }}>
+      <div className="board" style={{ gridTemplateColumns: `repeat(${boardSize}, 1fr)`, width: `${BORAD_SIZE_IN_PX}px`, height: `${BORAD_SIZE_IN_PX}px` }}>
         {cells.map((cell, index) => <Cell cell={cell} cellProps={cellProps} key={index} />)}
       </div>
     </div >
