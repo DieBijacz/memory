@@ -19,14 +19,15 @@ const Game = () => {
 
   const cellProps = { setWrongClick, rightClick, setRightCLick, wrongClick, allowClicks, setAllowClicks }
 
-  function handleStart() {
-    setStartGame(true)
-  }
-
   // INITIAL GAME
   useEffect(() => {
     generateCells(level, boardSize, setCells)
-  }, [level, boardSize, setCells])
+  }, [level, boardSize, setCells, lives])
+
+  const clearCells = useCallback(() => {
+    setCells([])
+    setWrongClick(0)
+  }, [])
 
   // LEVEL UP
   const changeLevel = useCallback(() => {
@@ -37,16 +38,17 @@ const Game = () => {
     setBoardSize(BOARD_SIZE_GRID[level])
   }, [level, setLevel])
 
-  // WRONG CLICKS
+  // 3 WRONG CLICKS
   useEffect(() => {
     if (wrongClick === 3) {
       gameOver()
       setAllowClicks(false)
       setLives(prev => prev -= 1)
+      clearCells()
     }
-  }, [wrongClick, setLives, setAllowClicks])
+  }, [wrongClick, setLives, setAllowClicks, clearCells])
 
-  // RIGHT LICKS
+  // RIGHT CLICKS
   useEffect(() => {
     if (rightClick === level + 2) {
       changeLevel()
@@ -66,7 +68,7 @@ const Game = () => {
           </div>
           <span>Visual Memory Test</span>
           <p>Memorize the squares.</p>
-          <button onClick={handleStart}>Start</button>
+          <button onClick={() => setStartGame(true)}>Start</button>
         </div>
         :
         <div className='background'>

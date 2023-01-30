@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div id="home-page" className='flex-1'>
       <div className="container">
-        <h1>GAMES:</h1>
+        <h1>TESTS:</h1>
         <div className="card-container">
           <Link to='/memory'>
             <div className="card link center">

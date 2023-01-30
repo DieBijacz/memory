@@ -175,6 +175,7 @@ a {
     padding: 2rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     height: 100%;
+    transition: .2s ease-out;
 
     p {
       margin-bottom: auto;
@@ -206,7 +207,6 @@ a {
 
   .link {
     &:hover {
-      transition: .2s ease-out;
       transform: translateY(-5px);
     }
   }

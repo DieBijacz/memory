@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { TIME_SHOW_ON_START } from './settings'
 
 const Cell = ({ cell, cellProps }) => {
-  const { setWrongClick, rightClick, setRightCLick, wrongClick, allowClicks, setAllowClicks } = cellProps
+  const { setWrongClick, setRightCLick, allowClicks, setAllowClicks } = cellProps
   const [cellState, setCellState] = useState('hidden')
   const [alreadyClicked, setAlreadyClicked] = useState(false)
 

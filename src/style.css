@@ -216,6 +216,8 @@ a {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   height: 100%;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
 }
 
 .card-container .card p {
@@ -255,8 +257,6 @@ a {
 }
 
 .card-container .link:hover {
-  -webkit-transition: .2s ease-out;
-  transition: .2s ease-out;
   -webkit-transform: translateY(-5px);
           transform: translateY(-5px);
 }

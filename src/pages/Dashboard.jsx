@@ -2,7 +2,7 @@ import React from 'react'
 
 const Dashboard = () => {
   return (
-    <div className='container'>
+    <div className='container flex-1'>
       <h1>Dashboard</h1>
     </div>
   )
