@@ -1,10 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Cell from './Cell'
-import { blink, gameOver, generateCells } from './BoardFunc.jsx'
+import { gameOver, generateCells } from './BoardFunc.jsx'
 import Lives from './Lives'
 import { BOARD_SIZE_GRID, BORAD_SIZE_IN_PX } from './settings'
+import { faSquare as emptySquare } from '@fortawesome/free-regular-svg-icons'
+import { faSquare as filledSquare } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Game = () => {
+  const [startGame, setStartGame] = useState(false)
   const [level, setLevel] = useState(1)
   const [lives, setLives] = useState(3)
   const [boardSize, setBoardSize] = useState(3)
@@ -14,6 +18,10 @@ const Game = () => {
   const [allowClicks, setAllowClicks] = useState(false)
 
   const cellProps = { setWrongClick, rightClick, setRightCLick, wrongClick, allowClicks, setAllowClicks }
+
+  function handleStart() {
+    setStartGame(true)
+  }
 
   // INITIAL GAME
   useEffect(() => {
@@ -48,13 +56,29 @@ const Game = () => {
 
   return (
     <div id='memory-game'>
-      <div className="stats">
-        <div>Level: {level}</div>
-        <Lives lives={lives} />
-      </div>
-      <div className="board" style={{ gridTemplateColumns: `repeat(${boardSize}, 1fr)`, width: `${BORAD_SIZE_IN_PX}px`, height: `${BORAD_SIZE_IN_PX}px` }}>
-        {cells.map((cell, index) => <Cell cell={cell} cellProps={cellProps} key={index} />)}
-      </div>
+      {!startGame ?
+        <div className='background start-panel'>
+          <div className='squares-icon'>
+            <FontAwesomeIcon icon={filledSquare} />
+            <FontAwesomeIcon icon={emptySquare} />
+            <FontAwesomeIcon icon={filledSquare} />
+            <FontAwesomeIcon icon={filledSquare} />
+          </div>
+          <span>Visual Memory Test</span>
+          <p>Memorize the squares.</p>
+          <button onClick={handleStart}>Start</button>
+        </div>
+        :
+        <div className='background'>
+          <div className="stats">
+            <div>Level: {level}</div>
+            <Lives lives={lives} />
+          </div>
+          <div className="board" style={{ gridTemplateColumns: `repeat(${boardSize}, 1fr)`, width: `${BORAD_SIZE_IN_PX}px`, height: `${BORAD_SIZE_IN_PX}px` }}>
+            {cells.map((cell, index) => <Cell cell={cell} cellProps={cellProps} key={index} />)}
+          </div>
+        </div>
+      }
     </div >
   )
 }
